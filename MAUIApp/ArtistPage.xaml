@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MirthApp.ArtistPage"
+             Title="ArtistPage"
+             Shell.BackgroundColor="Black">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Image
+                Source="white_logo.png"
+                HeightRequest="30"
+                Aspect="AspectFit"
+                        Margin="15,0,0,0"/>
+            <Label Text="Artist page"
+                   TextColor="White"
+                   Margin="25,3,0,0"
+                   FontSize="30"
+                   FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content xmlns:local="clr-namespace:MirthApp">
+        <StackLayout Margin="20">
+
+            <Label Text="Details"
+                   FontSize="30"
+                   Margin="0,0,0,0"/>
+            <Entry Placeholder="Name" Text="{Binding Name}" Margin="0,20,0,20">
+                <Entry.Behaviors>
+                    <local:ValidationBehaviour/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry Placeholder="Country" Text="{Binding Country}" Margin="0,0,0,20"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Save"
+                        Clicked="OnSaveButtonClicked"
+                        BackgroundColor="#f94c57"
+                        TextColor="White"
+                        Margin="0,0,10,0"/>
+                <Button Grid.Column="1"
+                        Text="Delete"
+                        Clicked="OnDeleteButtonClicked"
+                        BackgroundColor="#f94c57"
+                        TextColor="White"/>
+            </Grid>
+
+            <Label Text="Releases"
+               FontSize="30"
+               Margin="0,20,0,0"/>
+            <ListView x:Name="releaseListView"
+                      Margin="20"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

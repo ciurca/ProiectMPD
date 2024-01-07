@@ -1,0 +1,64 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn-sign-in {
+    background-color: #C8102E;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 450;
+}
+
+.navbar-icon i {
+    color: #C8102E;
+}
+
+#mirth-red {
+    color: #C8102E;
+}
+.btn-sign-in .bi-person-fill {
+    margin-right: 5px;
+}
+/* Pentru imaginea release-ului */
+.col-md-3 img {
+    height: 200px;
+    width: 200px;
+}
+
+    .col-sm-6 img {
+        height: 200px;
+        width: 200px;
+    }
+
+/* Pentru Rating-ul de la review-uri */
+.star-rating {
+    line-height: 32px;
+    font-size: 1.25em;
+}
+
+.star-rating .bi-star-fill {
+    color: #C8102E;
+}
+

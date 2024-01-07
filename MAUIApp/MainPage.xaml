@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MirthApp.MainPage"
+             Title="Home"
+             Shell.BackgroundColor="Black">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Image Source="white_logo.png"
+                   HeightRequest="30"
+                   Aspect="AspectFit"
+                   Margin="15,0,0,0"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="0,0"
+            Spacing="25">
+            <StackLayout BackgroundColor="#f94c57"
+                     VerticalOptions="Fill"
+                     HorizontalOptions="Fill">
+                <Frame BackgroundColor="#f94c57"
+                   Margin="0,0,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   HasShadow="False"
+                   CornerRadius="0"
+                   BorderColor="Transparent">
+                    <Image
+                        Source="cover.png"
+                        HeightRequest="303"
+                        Aspect="AspectFit" />       
+                </Frame>
+            </StackLayout>
+            
+
+            <Label
+                Text="Welcome 👋"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Explore our app using &#10;the tab bar"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

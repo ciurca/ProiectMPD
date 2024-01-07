@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MirthApp.ReleasePage"
+             Title="Release Page"
+             Shell.BackgroundColor="Black">
+
+    <Shell.TitleView>
+
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Image
+                Source="white_logo.png"
+                HeightRequest="30"
+                Aspect="AspectFit"
+                        Margin="15,0,0,0"/>
+            <Label Text="Release page"
+                   TextColor="White"
+                   Margin="25,3,0,0"
+                   FontSize="30"
+                   FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+    <ScrollView>
+        
+        <StackLayout Margin="20">
+          
+            <Label Text="Details"
+                   FontSize="30"
+                   Margin="0,0,0,0"
+                   ></Label>
+            <Entry Placeholder="Name" Text="{Binding Name}" Margin="0,20,0,20"/>
+        <Picker Title="Type" SelectedItem="{Binding Type}" Margin="0,0,0,20">
+            <Picker.Items>
+                <x:String>Album</x:String>
+                <x:String>Single</x:String>
+                <x:String>EP</x:String>
+                <x:String>Compilation</x:String>
+            </Picker.Items>
+        </Picker>
+        <Entry Placeholder="Language" Text="{Binding Language}" Margin="0,0,0,20"/>
+        <Entry Placeholder="Artwork" Text="{Binding Artwork}" Margin="0,0,0,20"/>
+        <Entry Placeholder="Label" Text="{Binding Label}" Margin="0,0,0,20"/>
+        <Entry Placeholder="Year" Text="{Binding Year}" Margin="0,0,0,20"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save"
+        Clicked="OnSaveButtonClicked"
+        BackgroundColor="#f94c57"
+        TextColor="White"
+        Margin="0,0,10,0"/>
+                <Button Grid.Column="1"
+        Text="Delete"
+        Clicked="OnDeleteButtonClicked"
+        BackgroundColor="#f94c57"
+        TextColor="White"/>
+            </Grid>
+
+            <Label Text="Artist"
+                   FontSize="30"
+                   Margin="0,20,0,0" />
+
+
+
+
+            <Picker x:Name="artistPicker"
+                    Title="Add or change the artist"
+                   SelectedIndexChanged="OnArtistPickerSelectedIndexChanged"
+                    ItemsSource="{Binding Artists}" 
+                    SelectedItem="{Binding SelectedArtist}"
+                    Margin="0,0,0,20"
+                    >
+                <Picker.ItemDisplayBinding>
+                    <Binding Path="Name"/>
+                </Picker.ItemDisplayBinding>
+            </Picker>
+
+            <Label Text="Selected Artist:"
+                   FontSize="15"
+                   Margin="0,0,0,10"
+                   HorizontalOptions="Start" />
+
+            <Label Text="{Binding SelectedArtist.Name}"
+                   FontSize="15"
+                   TextColor="Gray"
+                   Margin="0,0,0,20"
+                   HorizontalOptions="Start" />
+
+            <Label Text="Genres"
+               FontSize="30"
+               Margin="0,20,0,0"
+               ></Label>
+        <ListView x:Name="listView"
+                  Margin="20"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Add/Choose Genre"
+                    Clicked="OnChooseButtonClicked"
+                    Margin="0,0,10,0"
+                    BackgroundColor="Grey"
+                    TextColor="White"/>
+            <Button Grid.Column="1"
+                    Text="Delete Genre from Release"
+                    Clicked="OnDeleteButtonItemClicked"
+                    BackgroundColor="Gray"
+TextColor="White"
+                    />
+        </Grid>
+            
+
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

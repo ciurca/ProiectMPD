@@ -1,0 +1,49 @@
+﻿@page
+@model ProiectMPD.Pages.User.Library.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1><i class="bi bi-music-note-list"></i> Library</h1>
+<form asp-page="./Index" method="get">
+    <div class="input-group w-100 mb-3">
+        <input type="text" name="SearchString" class="form-control" value="@Model.CurrentFilter" placeholder="Search releases & artists">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    @foreach (var item in Model.Release)
+    {
+        <div class="col-sm-6 col-md-3">
+            <a asp-page="/User/Releases/Details" asp-route-id="@item.ID" class="text-reset text-decoration-none">
+                <img src="@(item.Artwork != null ? @item.Artwork : "https://images.squarespace-cdn.com/content/v1/5d2e2c5ef24531000113c2a4/1564770283101-36J6KM8EIK71FOCGGDM2/album-placeholder.png")" class="rounded center-block img-responsive">
+            </a>
+
+            <div class="text-left">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h5 class="text-muted mb-0">
+                            <a asp-page="/User/Releases/Details" asp-route-id="@item.ID" class="text-reset text-decoration-none">@item.Name</a>
+                        </h5>
+                        <p class="mb-0">
+                            <a asp-page="/User/Artists/Details" asp-route-id="@item.ArtistID" class="text-reset text-decoration-none">@item.Artist.Name</a>
+                            • @item.Type <br /><small>@item.Year</small>
+                        </p>
+                    </div>
+                    <form method="post" asp-page-handler="RemoveFromLibrary" class="ms-2">
+                        <input type="hidden" name="releaseId" value="@item.ID" />
+                        <button type="submit" class="btn btn-link p-0 border-0 bg-transparent" style="outline:none;box-shadow:none;">
+                            <i class="bi-heart-fill" style="color: #dc3545; font-size: 1.5rem;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

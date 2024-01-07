@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MirthApp.ReleaseEntryPage"
+             Title="Releases"
+             Shell.BackgroundColor="Black">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Image Source="white_logo.png"
+                   HeightRequest="30"
+                   Aspect="AspectFit"
+                   Margin="15,0,0,0"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Release"
+                     Clicked="OnReleaseAddedClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <ListView x:Name="listView"
+                  Margin="20"
+                  ItemSelected="OnListViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                            <Image Source="{Binding Artwork}" WidthRequest="250" HeightRequest="250" Aspect="AspectFit" Margin="0,0,30,0"/>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="42" Margin="0"/>
+                                <Label Text="{Binding SelectedArtist.Name}" FontSize="21" Margin="0,0,0,10"/>
+                                <Label Text="{Binding Type}" FontSize="15"/>
+                                <Label Text="{Binding Language}" FontSize="15"/>
+                                <Label Text="{Binding Label}" FontSize="15"/>
+                                <Label Text="{Binding Year}" FontSize="15"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ScrollView>
+</ContentPage>
